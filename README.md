@@ -28,6 +28,19 @@
 
 본 리포지토리는 다음과 같은 파일들로 구성되어 있습니다.
 
+### 📦 Core Library
+* **`population_density_classifier.zip`**
+  * **기능:** 인구 밀도 판단을 위한 핵심 분류 라이브러리.
+  * **구성:** 센서 입력값 기반 인구 밀도 상태(`LOW`, `HIGH`) 분류 로직 포함.
+  * **역할:**
+    메인 스케치(`population_classifier.ino`)에서 호출되어
+    실시간 인구 밀도 판별 결과를 반환.
+  * **특징:**
+    * Arduino IDE 라이브러리 형식으로 제공되어 재사용성 및 확장성 확보
+  * **활용:**
+    AI 추론 결과 또는 센서 전처리 데이터의 후처리 단계에 사용
+
+
 ### 📂 Main Logic
 * **`population_classifier.ino`**
     * **기능:** 현장 데이터 수집 및 AI 모델 추론 수행, 클라우드 전송 담당.
@@ -36,6 +49,7 @@
 * **`mqtt_lcd_response.ino`**
     * **기능:** 현장 상황 즉각적 전파를 위한 시각적 피드백 담당.
     * **로직:** AWS IoT Core 또는 로컬 브로커로부터 위험 신호를 수신(Subscribe)하여 LCD에 경고 문구("WARNING") 표출 및 소리 알림.
+
 
 ### 📂 Data Acquisition
 * **`data_collect.ino`**

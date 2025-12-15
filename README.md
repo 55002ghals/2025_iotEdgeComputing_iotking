@@ -29,18 +29,18 @@
 본 리포지토리는 다음과 같은 파일들로 구성되어 있습니다.
 
 ### 📂 Main Logic
-* **`mqtt_publisher.ino`**
+* **`population_classifier.ino`**
     * **기능:** 현장 데이터 수집 및 AI 모델 추론 수행, 클라우드 전송 담당.
-    * **로직:** 센서 데이터 분석 후 밀집도가 5회 연속 `HIGH`로 판별될 경우 AWS IoT Core로 MQTT 메시지 발행(Publish).
+    * **로직:** 센서 데이터 분석 후 `HIGH`로 판별될 경우 AWS IoT Core로 MQTT 메시지 발행.
     
 * **`mqtt_lcd_response.ino`**
     * **기능:** 현장 상황 즉각적 전파를 위한 시각적 피드백 담당.
-    * **로직:** AWS IoT Core 또는 로컬 브로커로부터 위험 신호를 수신(Subscribe)하여 LCD에 경고 문구("DANGER") 표출.
+    * **로직:** AWS IoT Core 또는 로컬 브로커로부터 위험 신호를 수신(Subscribe)하여 LCD에 경고 문구("WARNING") 표출 및 소리 알림.
 
 ### 📂 Data Acquisition
 * **`data_collect.ino`**
     * **기능:** AI 학습 모델 생성을 위한 초기 데이터 수집용 코드.
-    * **로직:** 센서의 Raw Data를 시리얼로 로깅하여 Edge-Impluse Platform에서 수집.
+    * **로직:** 센서의 Raw Data를 시리얼로 로깅. csv로 추출 후 Edge Impulse 업로드.
 
 ### 📂 Configuration & Security
 * **`arduino_secrets_template.h`**
